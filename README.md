@@ -1,3 +1,5 @@
+<h1 align="center">EM CONSTRUÇÃO!</h1>
+
 <h1 align="center">A Penseira</h1>
 
 <h1 align="center">
@@ -11,9 +13,6 @@ Eu anoto desde os meus 15 anos em uma agenda antiga, e ela da mesma forma anota 
 
 A ideia de chama-la de "A Penseira" partiu do meu amor por Harry Potter e seu mundo, e a Penseira de Dumbledore é o local onde ele armazena seus pensamentos, e nesta minha API irei armazenar os dados de Filmes e Livros ja assistidos ou lidos com a possibilidade de dar notas e deixar meu pensamento sobre cada um.
 
-![image](https://media.tenor.com/hvBLTAOgvnsAAAAC/harry-potter-dumbledore.gif)
-
-<br>
-<br>
-
 Irei melhorar esta API ao ponto de compartilhar com outras pessoas, para que usem como indicação de livros/filmes. E que também possam ter o hábito de anotar e compartilhar pois adoro esse tipo de troca.
+
+![image](https://media.tenor.com/hvBLTAOgvnsAAAAC/harry-potter-dumbledore.gif)
