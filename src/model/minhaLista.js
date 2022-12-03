@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const livroSchema = new mongoose.Schema({
+const minhaListaSchema = new mongoose.Schema({
   _id: {
     type: mongoose.Schema.Types.ObjectId,
     default: mongoose.Types.ObjectId,
@@ -10,36 +10,28 @@ const livroSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
-  autor: {
+  Autor: {
     type: String,
-    required: true,
+    required: false,
   },
   anoLancamento: {
     type: Number,
-    required: true,
+    required: false,
   },
   categoria: {
     type: String,
     required: false,
   },
-  recomenda: {
-    type: Boolean,
-    required: true,
+  Assistido: {
+    type: Date,
+    required: false,
   },
-  lido: {
-    type: Boolean,
-    required: true,
-  },
-  pages: Number,
-
-  nota: Number,
-
   Comentarios: {
     type: String,
     required: false,
   },
 });
 
-const Model = mongoose.model("Livros", livroSchema);
+const Model = mongoose.model("Minha Lista", minhaListaSchema);
 
 module.exports = Model;
