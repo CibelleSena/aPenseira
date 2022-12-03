@@ -10,23 +10,15 @@ const minhaListaSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
-  Autor: {
+  autor: {
     type: String,
-    required: false,
-  },
-  anoLancamento: {
-    type: Number,
     required: false,
   },
   categoria: {
     type: String,
     required: false,
   },
-  Assistido: {
-    type: Date,
-    required: false,
-  },
-  Comentarios: {
+  comentarios: {
     type: String,
     required: false,
   },

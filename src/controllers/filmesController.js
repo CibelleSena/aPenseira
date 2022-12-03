@@ -20,7 +20,7 @@ const adicionaFilme = async (req, res) => {
       salvarFilme,
     });
   } catch (error) {
-    console.error(error);
+    res.status(400).send({ message: error.message });
   }
 };
 

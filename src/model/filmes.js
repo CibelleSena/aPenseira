@@ -14,21 +14,9 @@ const filmeSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  anoLancamento: {
-    type: Number,
-    required: true,
-  },
   categoria: {
     type: String,
     required: false,
-  },
-  recomenda: {
-    type: Boolean,
-    required: true,
-  },
-  assistido: {
-    type: String,
-    required: true,
   },
   comentarios: {
     type: String,

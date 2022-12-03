@@ -14,30 +14,15 @@ const livroSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  anoLancamento: {
-    type: Number,
-    required: true,
-  },
   categoria: {
     type: String,
     required: false,
   },
-  recomenda: {
-    type: Boolean,
-    required: true,
-  },
-  lido: {
-    type: Boolean,
-    required: true,
-  },
-  pages: Number,
-
-  nota: Number,
-
-  Comentarios: {
+   Comentarios: {
     type: String,
     required: false,
   },
+  nota: Number,
 });
 
 const Model = mongoose.model("Livros", livroSchema);
