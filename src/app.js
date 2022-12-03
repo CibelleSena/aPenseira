@@ -3,7 +3,7 @@ const swaggerFile = require("../swagger/swagger_output.json");
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-const db = require("./database/dbConnect");
+const db = require("./database/dbconnect");
 const index = require("./routes/index");
 const filmes = require("./routes/filmesRoutes");
 const livros = require("./routes/livrosRoutes");
