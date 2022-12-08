@@ -1,4 +1,4 @@
-const minhaListaSchema = require("../model/filmes");
+const minhaListaSchema = require("../model/minhaLista");
 
 const getMinhaLista = async (req, res) => {
   try {
@@ -16,7 +16,7 @@ const addMinhaLista = async (req, res) => {
     const salvarMinhaLista = await adicionaMinhaLista.save();
 
     return res.status(201).send({
-      message: "Filme adicionado com sucesso",
+      message: "Adicionado com sucesso em Minha Lista",
       salvarMinhaLista,
     });
   } catch (error) {
@@ -31,7 +31,7 @@ const deletaMinhaLista = async (req, res) => {
     await LocalizaMinhaLista.delete();
 
     return res.status(200).send({
-      mensagem: `O cadastro '${LocalizaMinhaLista.id}' foi deletado com sucesso!`,
+      mensagem: `O cadastro '${LocalizaMinhaLista.nome}' foi deletado com sucesso!`,
       LocalizaMinhaLista,
     });
   } catch (err) {
@@ -40,9 +40,50 @@ const deletaMinhaLista = async (req, res) => {
     });
   }
 };
+const localizaPeloNome = async (req, res) => {
+  try {
+    const encontraNome = await minhaListaSchema.find({ nome: req.query.nome });
+    if (!encontraNome) {
+      res
+        .status(404)
+        .json({
+          message:
+            "Este nome não foi localizado, por favor confira e tente novamente",
+        });
+    }
+    res.status(200).json(localizaPeloNome);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+const alteraCadastro = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { nome, autor, categoria, comentarios, } = req.body;
+    const alterarCadastro = await minhaListaSchema.findById(id);
+    if (alterarCadastro == null) {
+      res.status(404).json({ message: "Cadastro não localizado" });
+    }
+    alterarCadastro.nome = nome || alterarCadastro.nome;
+    alterarCadastro.autor = autor || alterarCadastro.autor;
+    alterarCadastro.categoria = categoria || alterarCadastro.categoria;
+    alterarCadastro.comentarios = comentarios || alterarCadastro.comentarios;
+
+    const salvaAlteração = await alterarCadastro.save();
+    res
+      .status(200)
+      .json({ message: "Cadastro alterado com sucesso!", salvaAlteração });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 
 module.exports = {
   getMinhaLista,
   addMinhaLista,
   deletaMinhaLista,
+  localizaPeloNome,
+  alteraCadastro
 };

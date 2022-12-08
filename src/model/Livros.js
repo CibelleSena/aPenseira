@@ -18,7 +18,7 @@ const livroSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
-   Comentarios: {
+   comentarios: {
     type: String,
     required: false,
   },

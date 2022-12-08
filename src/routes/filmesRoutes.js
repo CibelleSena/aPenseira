@@ -1,9 +1,17 @@
 const filmesController = require("../controllers/filmesController");
 const express = require("express");
+
 const router = express.Router();
 
-router.get("/filmes", filmesController.getAllFilmes);
-router.post("/addfilmes", filmesController.adicionaFilme);
-router.delete("/filmes/:id", filmesController.deletaFilme);
+router.get("/all", filmesController.getAllFilmes);
+router.post("/add", filmesController.adicionaFilme);
+router.delete("/:id", filmesController.deletaFilme);
+router.get("/nome", filmesController.localizaPeloNome);
+router.get("/nota", filmesController.localizaPelaNota);
+router.get("/autor", filmesController.localizaPeloAutor);
+router.patch("/alterar/:id", filmesController.alteraCadastro);
+
+
+
 
 module.exports = router;

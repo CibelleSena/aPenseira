@@ -57,7 +57,7 @@ const deletaUsuario = async (req, res) => {
     await encontraUsuario.delete();
 
     return res.status(200).send({
-      mensagem: `O usuário '${encontraUsuario.id}' foi deletado com sucesso!`,
+      mensagem: `O usuário '${encontraUsuario.nome}' foi deletado com sucesso!`,
       encontraUsuario,
     });
   } catch (err) {
@@ -67,9 +67,31 @@ const deletaUsuario = async (req, res) => {
   }
 };
 
+const alteraCadastro = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { nome, CPF, email } = req.body;
+    const alterarCadastro = await usuarioSchema.findById(id);
+    if (alterarCadastro == null) {
+      res.status(404).json({ message: "Cadastro não localizado" });
+    }
+    alterarCadastro.nome = nome || alterarCadastro.nome;
+    alterarCadastro.CPF = CPF || alterarCadastro.CPF;
+    alterarCadastro.email = email || alterarCadastro.email;
+
+    const salvaAlteração = await alterarCadastro.save();
+    res
+      .status(200)
+      .json({ message: "Cadastro alterado com sucesso!", salvaAlteração });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 module.exports = {
   getAllUsuarios,
   adicionaUsuario,
   login,
   deletaUsuario,
+  alteraCadastro
 };

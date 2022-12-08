@@ -19,7 +19,11 @@ A ideia de chama-la de "A Penseira" partiu do meu amor por Harry Potter e seu mu
 <p align="center"><p>
 </h1>
 
+## Melhorias futuras
+
 #### Irei melhorar esta API ao ponto de compartilhar com outras pessoas, para que usem como indicação de livros/filmes. E que também possam ter o hábito de anotar e compartilhar pois adoro esse tipo de troca.
+
+Irei implementar opções de carregar imagens das capas de filmes e livros a ate mesmo melhorar os metodos de pesquisa.
 
 <br> 
 
@@ -38,13 +42,17 @@ A ideia de chama-la de "A Penseira" partiu do meu amor por Harry Potter e seu mu
 ## *Funcionalidades*
 
 - [ ] Cadastro de usuário
-- [ ] Cadastro de Filmes assistidos
-- [ ] Cadastro de Filmes para assistir
-- [ ] Cadastro de Livros lidos
-- [ ] Cadastro de Livros para ler
-- [ ] Alterar dados de Livros ou filmes
-- [ ] Deletar de Livros ou filmes da lista não assistidos / lidos
-- [ ] Deletar cadastro através do ID
+- [x] Cadastro de Filmes assistidos
+- [x] Cadastro de Filmes para assistir
+- [x] Cadastro de Livros lidos
+- [x] Cadastro de Livros para ler
+- [x] Alterar dados de Livros ou filmes e usuários
+- [x] Deletar de Livros ou filmes da lista não assistidos / lidos
+- [x] Deletar cadastro através do ID
+- [ ] Buscar pelo Nome
+- [ ] Buscar pelo Autor
+- [ ] Buscar pela Nota
+
 
 <br>
 
@@ -96,7 +104,7 @@ Seguiremos a ordem de instalações no terminal:
 - `npm install jsonwebtoken --save`
 - `npm install bcrypt --save`
 - `npm install --save-exact jest@28.1.0 --save-dev`
-- Inicialize com o comando `npm start` para que você possa executar os testes localmente.
+- Inicialize com o comando `npm start` para que você possa executar.
 </br>
 
 
@@ -106,22 +114,30 @@ Seguiremos a ordem de instalações no terminal:
 
 | método HTTP  |    EndPoint     |       Descrição      | 
 | ------ | -------------   | ---------------------------| 
-| GET    | `/usuarios`         |  Listar todos usuarios cadastrados      |
-| GET    | `/livros`         |  Listar todos livros      |     
-| GET    | `/filmes` |  Listar todos os filmes         |       
-| GET    | `/all`  |  Listar todos os livros e filmes cadastrados  |
-| GET    | `/nome`    |  Acessar livro ou filme pelo nome | 
-| GET    | `/nota`  |  Listar todos os livros e filmes pela nota recebida  |
-| GET    | `/autor`  |  Listar todos os livros e filmes pelo nome do Autor  | 
-| GET    | `/minhalista`  |  Listar todos os livros e filmes não assistidos ou lidos |
-| POST   | `/addusuario`    |  Adicionar um novo usuario     |
-| POST   | `/addlivro`    |  Adicionar um novo livro lido     |
-| POST   | `/addfilme`     |  Adicionar um novo filme assistido |
-| POST   | `/minhaLista/add`|  Adicionar um novo livro ou filme na lista de não assistidos ou lidos | 
-| PATCH  | `/alterar/:id`    |  Alterar dados pelo ID |
-| DELETE | `/filmes/:id`     |  Deverá deletar um filme pelo ID    | 
-| DELETE | `/livros/:id`     |  Deverá deletar um livro pelo ID    | 
-| DELETE  | `/minhalista/:id`    |  Deleta cadastro de filme/livro da lista de não lidos ou não vistos pelo ID |
+| GET    | `/usuarios/allusuarios`  |  Listar todos usuarios cadastrados |
+| POST   | `/usuarios/addusuario`   |  Adicionar um novo usuario     |
+| POST   | `/usuarios/login` |  Adicionar um novo usuario     |
+| DELETE | `/usuarios/:id`   |  Deverá deletar um usuário pelo ID |
+| PATCH  | `/usuarios/alterar/:id` |  Alterar dados de um usuário pelo ID | 
+| GET    | `/livros/allLivros`    |  Listar todos livros           | 
+| POST   | `/livros/addlivro`     |  Adicionar um novo livro lido  |
+| DELETE | `/livros/:id`   |  Deverá deletar um livro pelo ID | 
+| GET    | `/livros/nome`  |  Localizar um livro pelo nome |
+| GET    | `/livros/nota`  |  Localizar um livro pela nota |
+| GET    | `/livros/autor` |  Localizar um livro pelo nome do autor |
+| PATCH  | `/livros/alterar/:id` |  Alterar dados de um livro pelo ID |
+| GET    | `/filmes/allfilmes`    |  Listar todos os filmes         |  
+| POST   | `/filmes/addfilme`     |  Adicionar um novo filme assistido | 
+| DELETE | `/filmes/:id`   |  Deverá deletar um filme pelo ID    | 
+| GET    | `/filmes/nome`  |  Localizar um filme pelo nome |
+| GET    | `/filmes/nota`  |  Localizar um filme pela nota |
+| GET    | `/filmes/autor` |  Localizar um filme pelo nome do autor |
+| PATCH  | `/filmes/alterar/:id`  |  Alterar dados de um filme pelo ID |
+| GET    | `/minhalista/allLista`  |  Listar todos os livros e filmes não assistidos ou lidos |
+| POST   | `minhalista/addLista`|  Adicionar um novo livro ou filme na lista de não assistidos ou lidos | 
+| DELETE | `/minhalista/:id` |  Deleta cadastro de filme/livro da lista de não lidos ou não vistos pelo ID |
+| GET    | `/minhalista/nome`  |  Localizar cadastro de filme/livro da lista de não lidos ou não vistos pelo nome |
+| PATCH  | `/minhalista/alterar/:id`  |  Alterar dados de filme/livro da lista de não lidos ou não vistos pelo ID |
  
 <br>
 
@@ -134,13 +150,16 @@ Seguiremos a ordem de instalações no terminal:
 - Inicialize com o comando `npm start` para que você possa executar.
 </br>
 
+## Obrigada por chegar até aqui, espero que tenha aproveitado bastante esta API! 
+<br>
+
 <br>
 
 ## ✅ **Quem sou eu**
 
 Sou a Cibelle , tenho 36 anos, sou mineirinha de BH, mãe do Jorge de 3 anos. Conheci e me apaixonei por Backend atraves de um amigo Dev Senior. Comecei fazendo cursos em plataformas gratuitas na internet, e em um patrocinado conheci a {Reprograma}, e cá estou eu apresentando meu projeto final depois de 18 semanas de muita dedicação.
 
-*Meus contatos*
+*Meus contatos:*
 - [linkedin](https://www.linkedin.com/in/cibellesena/)
 - [github](https://github.com/CibelleSena)
 
