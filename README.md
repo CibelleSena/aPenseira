@@ -23,7 +23,7 @@ A ideia de chama-la de "A Penseira" partiu do meu amor por Harry Potter e seu mu
 
 #### Irei melhorar esta API ao ponto de compartilhar com outras pessoas, para que usem como indicação de livros/filmes. E que também possam ter o hábito de anotar e compartilhar pois adoro esse tipo de troca.
 
-Irei implementar opções de carregar imagens das capas de filmes e livros a ate mesmo melhorar os metodos de pesquisa.
+Irei implementar opções de carregar imagens das capas de filmes e livros e ate mesmo melhorar os metodos de pesquisa.
 
 <br> 
 
@@ -52,6 +52,7 @@ Irei implementar opções de carregar imagens das capas de filmes e livros a ate
 - [ ] Buscar pelo Nome
 - [ ] Buscar pelo Autor
 - [ ] Buscar pela Nota
+- [ ] Buscar por filmes / livros não lidos
 
 
 <br>
@@ -114,26 +115,26 @@ Seguiremos a ordem de instalações no terminal:
 
 | método HTTP  |    EndPoint     |       Descrição      | 
 | ------ | -------------   | ---------------------------| 
-| GET    | `/usuarios/allusuarios`  |  Listar todos usuarios cadastrados |
+| GET    | `/usuarios/all`  |  Listar todos usuarios cadastrados |
 | POST   | `/usuarios/addusuario`   |  Adicionar um novo usuario     |
 | POST   | `/usuarios/login` |  Adicionar um novo usuario     |
 | DELETE | `/usuarios/:id`   |  Deverá deletar um usuário pelo ID |
 | PATCH  | `/usuarios/alterar/:id` |  Alterar dados de um usuário pelo ID | 
-| GET    | `/livros/allLivros`    |  Listar todos livros           | 
+| GET    | `/livros/all`    |  Listar todos livros           | 
 | POST   | `/livros/addlivro`     |  Adicionar um novo livro lido  |
 | DELETE | `/livros/:id`   |  Deverá deletar um livro pelo ID | 
 | GET    | `/livros/nome`  |  Localizar um livro pelo nome |
 | GET    | `/livros/nota`  |  Localizar um livro pela nota |
 | GET    | `/livros/autor` |  Localizar um livro pelo nome do autor |
 | PATCH  | `/livros/alterar/:id` |  Alterar dados de um livro pelo ID |
-| GET    | `/filmes/allfilmes`    |  Listar todos os filmes         |  
+| GET    | `/filmes/all`    |  Listar todos os filmes         |  
 | POST   | `/filmes/addfilme`     |  Adicionar um novo filme assistido | 
 | DELETE | `/filmes/:id`   |  Deverá deletar um filme pelo ID    | 
 | GET    | `/filmes/nome`  |  Localizar um filme pelo nome |
 | GET    | `/filmes/nota`  |  Localizar um filme pela nota |
 | GET    | `/filmes/autor` |  Localizar um filme pelo nome do autor |
 | PATCH  | `/filmes/alterar/:id`  |  Alterar dados de um filme pelo ID |
-| GET    | `/minhalista/allLista`  |  Listar todos os livros e filmes não assistidos ou lidos |
+| GET    | `/minhalista/all`  |  Listar todos os livros e filmes não assistidos ou lidos |
 | POST   | `minhalista/addLista`|  Adicionar um novo livro ou filme na lista de não assistidos ou lidos | 
 | DELETE | `/minhalista/:id` |  Deleta cadastro de filme/livro da lista de não lidos ou não vistos pelo ID |
 | GET    | `/minhalista/nome`  |  Localizar cadastro de filme/livro da lista de não lidos ou não vistos pelo nome |
