@@ -43,48 +43,17 @@ const deletaFilme = async (req, res) => {
 
 const localizaPeloNome = async (req, res) => {
   try {
-    const { nome } = req.body
-    console.log(nome)
-    const localizaNome = await filmeSchema.find({ nome });
-
-    return res.status(200).send({ 
-      mensagem: `O filme ('${localizaNome}') foi o escolhido`,
-    });
-  } catch (err) {
-    return res.status(400).send({
-      messagem:
-        "Este filme não foi localizado, por favor confira e tente novamente",
-    });
-  }
+   const localizaNome = await filmeSchema.findOne({ nome: req.query.nome });
+    if(!localizaNome){
+    return res.status(400).json({mensagem: `O filme '${req.query.nome}' não foi localizado,por favor confira e tente novamente.`})
+    }
+  res.status(200).json(localizaNome)
+} catch(error){
+    console.log(error);
+    res.status(500).json({messagem: error.message});
+}
 };
-
-const localizaPelaNota = async (req, res) => {
-  try {
-    const localizaNota = await filmeSchema.find({ nota: req.query.nota });
-    return res.status(200).send({ 
-      mensagem: `Os filmes '${localizaNota.nota}' foram os escolhidos pela nota`,
-    });
-  } catch (err) {
-    return res.status(400).send({
-      messagem:
-        "Este filme não foi localizado, por favor confira e tente novamente",
-    });
-  }
-};
-const localizaPeloAutor = async (req, res) => {
-  try {
-    const localizaAutor = await filmeSchema.find({ autor: req.query.autor });
-    return res.status(200).send({ 
-      mensagem: `Os filmes '${localizaAutor.autor}' foram os escolhidos pelo Autor`,
-    });
-  } catch (err) {
-    return res.status(400).send({
-      messagem:
-        "Este filme não foi localizado, por favor confira e tente novamente",
-    });
-  }
-};
-
+    
 const alteraCadastro = async (req, res) => {
   try {
     const { id } = req.params;
@@ -113,7 +82,5 @@ module.exports = {
   adicionaFilme,
   deletaFilme,
   localizaPeloNome,
-  localizaPelaNota,
-  localizaPeloAutor,
   alteraCadastro,
 };

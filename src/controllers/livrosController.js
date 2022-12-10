@@ -43,47 +43,17 @@ const deletaLivro = async (req, res) => {
 
 const localizaPeloNome = async (req, res) => {
   try {
-    const encontraNome = await livroSchema.find({ nome: req.query.nome });
-    if (!encontraNome) {
-      res
-        .status(404)
-        .json({
-          message:
-            "Este livro não foi localizado, por favor confira e tente novamente",
-        });
+   const localizaNome = await livroSchema.findOne({ nome: req.query.nome });
+    if(!localizaNome){
+    return res.status(400).json({mensagem: `O livro '${req.query.nome}' não foi localizado, por favor confira e tente novamente.`})
     }
-    res.status(200).json(localizaPeloNome);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
+  res.status(200).json(localizaNome)
+} catch(error){
+    console.log(error);
+    res.status(500).json({messagem: error.message});
+}
 };
 
-const localizaPelaNota = async (req, res) => {
-  try {
-    const localizaNota = await livroSchema.find({ nota: req.query.nota });
-    if (!localizaNota) {
-      res
-        .status(404)
-        .json({ message: "Nenhum livro encontrado para a nota escolhida" });
-    }
-    res.status(200).json(localizaPelaNota);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-};
-const localizaPeloAutor = async (req, res) => {
-  try {
-    const localizaAutor = await livroSchema.find({ autor: req.query.autor });
-    if (!localizaAutor) {
-      res
-        .status(404)
-        .json({ message: "Nada encontrado para o autor escolhido" });
-    }
-    res.status(200).json(localizaPeloAutor);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-};
 
 const alteraCadastro = async (req, res) => {
   try {
@@ -113,7 +83,5 @@ module.exports = {
   adicionaLivro,
   deletaLivro,
   localizaPeloNome,
-  localizaPelaNota,
-  localizaPeloAutor,
   alteraCadastro
 };

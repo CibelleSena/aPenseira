@@ -7,8 +7,6 @@ router.get("/all", filmesController.getAllFilmes);
 router.post("/add", filmesController.adicionaFilme);
 router.delete("/:id", filmesController.deletaFilme);
 router.get("/nome", filmesController.localizaPeloNome);
-router.get("/nota", filmesController.localizaPelaNota);
-router.get("/autor", filmesController.localizaPeloAutor);
 router.patch("/alterar/:id", filmesController.alteraCadastro);
 
 

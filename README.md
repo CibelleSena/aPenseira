@@ -50,9 +50,7 @@ Irei implementar opções de carregar imagens das capas de filmes e livros e ate
 - [x] Deletar de Livros ou filmes da lista não assistidos / lidos
 - [x] Deletar cadastro através do ID
 - [ ] Buscar pelo Nome
-- [ ] Buscar pelo Autor
-- [ ] Buscar pela Nota
-- [ ] Buscar por filmes / livros não lidos
+
 
 
 <br>
@@ -124,15 +122,11 @@ Seguiremos a ordem de instalações no terminal:
 | POST   | `/livros/addlivro`     |  Adicionar um novo livro lido  |
 | DELETE | `/livros/:id`   |  Deverá deletar um livro pelo ID | 
 | GET    | `/livros/nome`  |  Localizar um livro pelo nome |
-| GET    | `/livros/nota`  |  Localizar um livro pela nota |
-| GET    | `/livros/autor` |  Localizar um livro pelo nome do autor |
 | PATCH  | `/livros/alterar/:id` |  Alterar dados de um livro pelo ID |
 | GET    | `/filmes/all`    |  Listar todos os filmes         |  
 | POST   | `/filmes/addfilme`     |  Adicionar um novo filme assistido | 
 | DELETE | `/filmes/:id`   |  Deverá deletar um filme pelo ID    | 
 | GET    | `/filmes/nome`  |  Localizar um filme pelo nome |
-| GET    | `/filmes/nota`  |  Localizar um filme pela nota |
-| GET    | `/filmes/autor` |  Localizar um filme pelo nome do autor |
 | PATCH  | `/filmes/alterar/:id`  |  Alterar dados de um filme pelo ID |
 | GET    | `/minhalista/all`  |  Listar todos os livros e filmes não assistidos ou lidos |
 | POST   | `minhalista/addLista`|  Adicionar um novo livro ou filme na lista de não assistidos ou lidos | 
