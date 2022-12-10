@@ -19,7 +19,7 @@ mongoose.connect();
 app.use("/", index);
 app.use("/filmes", filmes);
 app.use("/livros", livros);
-app.use("usuarios", usuarios);
+app.use("/usuarios", usuarios);
 app.use("/minhaLista", minhaLista);
 app.use(
   "/minha-rota-de-documentacao",

@@ -11,7 +11,7 @@
     "http"
   ],
   "paths": {
-    "/": {
+    "/apenseira": {
       "get": {
         "description": "",
         "parameters": [],
@@ -22,7 +22,7 @@
         }
       }
     },
-    "aPenseira/filmes/filmes": {
+    "/filmes/all": {
       "get": {
         "description": "",
         "parameters": [],
@@ -36,18 +36,21 @@
         }
       }
     },
-    "aPenseira/filmes/addFilmes": {
+    "/filmes/add": {
       "post": {
         "description": "",
         "parameters": [],
         "responses": {
-          "201": {
-            "description": "Created"
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
           }
         }
       }
     },
-    "aPenseira/filmes/filmes/{id}": {
+    "/filmes/{id}": {
       "delete": {
         "description": "",
         "parameters": [
@@ -68,67 +71,7 @@
         }
       }
     },
-    "aPenseira/livros/livros": {
-      "get": {
-        "description": "",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "aPenseira/livros/addLivros": {
-      "post": {
-        "description": "",
-        "parameters": [],
-        "responses": {
-          "201": {
-            "description": "Created"
-          }
-        }
-      }
-    },
-    "aPenseira/livros/livros/{id}": {
-      "delete": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          }
-        }
-      }
-    },
-    "aPenseira/geral/all": {
-      "get": {
-        "description": "",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "aPenseira/geral/nome": {
+    "/filmes/nome": {
       "get": {
         "description": "",
         "parameters": [
@@ -142,8 +85,8 @@
           "200": {
             "description": "OK"
           },
-          "404": {
-            "description": "Not Found"
+          "400": {
+            "description": "Bad Request"
           },
           "500": {
             "description": "Internal Server Error"
@@ -151,53 +94,7 @@
         }
       }
     },
-    "aPenseira/geral/nota": {
-      "get": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "nota",
-            "in": "query",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "aPenseira/geral/autor": {
-      "get": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "autor",
-            "in": "query",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "aPenseira/geral/alterar/{id}": {
+    "/filmes/alterar/{id}": {
       "patch": {
         "description": "",
         "parameters": [
@@ -206,9 +103,36 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nome": {
+                  "example": "any"
+                },
+                "autor": {
+                  "example": "any"
+                },
+                "categoria": {
+                  "example": "any"
+                },
+                "comentarios": {
+                  "example": "any"
+                },
+                "nota": {
+                  "example": "any"
+                }
+              }
+            }
           }
         ],
         "responses": {
+          "200": {
+            "description": "OK"
+          },
           "404": {
             "description": "Not Found"
           },
@@ -218,12 +142,58 @@
         }
       }
     },
-    "aPenseira/geral/minhaLista": {
+    "/livros/all": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/livros/add": {
+      "post": {
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/livros/{id}": {
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/livros/nome": {
       "get": {
         "description": "",
         "parameters": [
           {
-            "name": "minhaLista",
+            "name": "nome",
             "in": "query",
             "type": "string"
           }
@@ -232,6 +202,54 @@
           "200": {
             "description": "OK"
           },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/livros/alterar/{id}": {
+      "patch": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nome": {
+                  "example": "any"
+                },
+                "autor": {
+                  "example": "any"
+                },
+                "categoria": {
+                  "example": "any"
+                },
+                "comentarios": {
+                  "example": "any"
+                },
+                "nota": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
           "404": {
             "description": "Not Found"
           },
@@ -241,10 +259,37 @@
         }
       }
     },
-    "aPenseira/geral/minhaLista/add": {
-      "post": {
+    "/usuarios/all": {
+      "get": {
         "description": "",
         "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/usuarios/add": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "password": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
           "201": {
             "description": "Created"
@@ -252,7 +297,40 @@
         }
       }
     },
-    "aPenseira/geral/minhaLista/{id}": {
+    "/usuarios/login": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "example": "any"
+                },
+                "password": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/usuarios/{id}": {
       "delete": {
         "description": "",
         "parameters": [
@@ -273,7 +351,49 @@
         }
       }
     },
-    "aPenseira/usuarios/usuarios": {
+    "/usuarios/alterar/{id}": {
+      "patch": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nome": {
+                  "example": "any"
+                },
+                "CPF": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/minhaLista/all": {
       "get": {
         "description": "",
         "parameters": [],
@@ -287,7 +407,7 @@
         }
       }
     },
-    "aPenseira/usuarios/addUsuario": {
+    "/minhaLista/add": {
       "post": {
         "description": "",
         "parameters": [],
@@ -298,7 +418,7 @@
         }
       }
     },
-    "aPenseira/usuarios/usuario/{id}": {
+    "/minhaLista/{id}": {
       "delete": {
         "description": "",
         "parameters": [
@@ -319,13 +439,22 @@
         }
       }
     },
-    "aPenseira/minhaLista/minhaLista": {
+    "/minhaLista/nome": {
       "get": {
         "description": "",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "nome",
+            "in": "query",
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
           },
           "500": {
             "description": "Internal Server Error"
@@ -333,19 +462,8 @@
         }
       }
     },
-    "aPenseira/minhaLista/minhaLista/add": {
-      "post": {
-        "description": "",
-        "parameters": [],
-        "responses": {
-          "201": {
-            "description": "Created"
-          }
-        }
-      }
-    },
-    "aPenseira/minhaLista/minhaLista/{id}": {
-      "delete": {
+    "/minhaLista/alterar/{id}": {
+      "patch": {
         "description": "",
         "parameters": [
           {
@@ -353,14 +471,38 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nome": {
+                  "example": "any"
+                },
+                "autor": {
+                  "example": "any"
+                },
+                "categoria": {
+                  "example": "any"
+                },
+                "comentarios": {
+                  "example": "any"
+                }
+              }
+            }
           }
         ],
         "responses": {
           "200": {
             "description": "OK"
           },
-          "400": {
-            "description": "Bad Request"
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }

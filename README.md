@@ -40,7 +40,7 @@ Quero implementar opções de carregar imagens das capas de filmes e livros e at
 
 ## *Funcionalidades*
 
-- [ ] Cadastro de usuário
+- [x] Cadastro de usuário
 - [x] Cadastro de Filmes assistidos
 - [x] Cadastro de Filmes para assistir
 - [x] Cadastro de Livros lidos
@@ -48,7 +48,7 @@ Quero implementar opções de carregar imagens das capas de filmes e livros e at
 - [x] Alterar dados de Livros ou filmes e usuários
 - [x] Deletar de Livros ou filmes da lista não assistidos / lidos
 - [x] Deletar cadastro através do ID
-- [ ] Buscar pelo Nome
+- [x] Buscar pelo Nome
 
 
 

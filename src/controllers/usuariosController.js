@@ -3,34 +3,38 @@ const SECRET = process.env.SECRET;
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
-const getAllUsuarios = async (req, res) => {
+const getAllUsuarios = (req, res) => {
   const authHeader = req.get(`authorization`);
-  const token = authHeader?.split(" ")[1] ?? "não Autorizado";
+  const token = authHeader.split(" ")[1];
 
   if (!token) {
     return res.status(401);
   }
-  const err = jwt.verify(token, SECRET, function (error) {
-    if (error) return error;
+  jwt.verify(token, SECRET, function (error) {
+    if (error) {
+      return res.status(401).send("Não Autorizado");
+    }
   });
-  console.log(req.url);
-  colaboradoras.find(function (err, colaboradoras) {
-    res.status(200).send(colaboradoras);
+  usuarioSchema.find(function (err, usuario) {
+    res.status(200).send(usuario);
   });
-};
+}; 
 
 const adicionaUsuario = async (req, res) => {
-  const senhaComHash = bcrypt.hashSync(req.body.password, 10);
-  req.body.password = senhaComHash;
+  try {
+    const senhaComHash = bcrypt.hashSync(req.body.password, 10)
+    req.body.password = senhaComHash
+    const NovoUsuario = new usuarioSchema(req.body);
 
-  const novoUsuario = new usuarioSchema(req.body);
+    const UsuarioSalvo = await NovoUsuario.save();
 
-  novoUsuario.save(function (err) {
-    if (err) {
-      return res.status(500).send({ message: err.message });
-    }
-    return res.status(201).send(colaboradora.toJSON());
-  });
+    return res.status(201).send({
+      "message": "Usuário criado com sucesso",
+      UsuarioSalvo
+    });
+  } catch (e) {
+    console.error(e);
+  };
 };
 
 const login = (req, res) => {
@@ -50,6 +54,7 @@ const login = (req, res) => {
   });
 };
 
+
 const deletaUsuario = async (req, res) => {
   try {
     const encontraUsuario = await usuarioSchema.findById(req.params.id);
@@ -66,6 +71,7 @@ const deletaUsuario = async (req, res) => {
     });
   }
 };
+
 
 const alteraCadastro = async (req, res) => {
   try {
@@ -86,7 +92,7 @@ const alteraCadastro = async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
-};
+}; 
 
 module.exports = {
   getAllUsuarios,
