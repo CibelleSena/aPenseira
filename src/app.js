@@ -21,6 +21,10 @@ app.use("/filmes", filmes);
 app.use("/livros", livros);
 app.use("usuarios", usuarios);
 app.use("/minhaLista", minhaLista);
-app.use('/minha-rota-de-documentacao', swaggerUi.serve, swaggerUi.setup(swaggerFile));
+app.use(
+  "/minha-rota-de-documentacao",
+  swaggerUi.serve,
+  swaggerUi.setup(swaggerFile)
+);
 
 module.exports = app;

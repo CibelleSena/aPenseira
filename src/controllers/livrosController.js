@@ -6,7 +6,8 @@ const getAllLivros = async (req, res) => {
     res.status(200).send(listaTodosLivros);
   } catch (error) {
     res.status(500).send({ message: error.message });
-  }};
+  }
+};
 
 const adicionaLivro = async (req, res) => {
   try {
@@ -40,20 +41,22 @@ const deletaLivro = async (req, res) => {
   }
 };
 
-
 const localizaPeloNome = async (req, res) => {
   try {
-   const localizaNome = await livroSchema.findOne({ nome: req.query.nome });
-    if(!localizaNome){
-    return res.status(400).json({mensagem: `O livro '${req.query.nome}' não foi localizado, por favor confira e tente novamente.`})
+    const localizaNome = await livroSchema.findOne({ nome: req.query.nome });
+    if (!localizaNome) {
+      return res
+        .status(400)
+        .json({
+          mensagem: `O livro '${req.query.nome}' não foi localizado, por favor confira e tente novamente.`,
+        });
     }
-  res.status(200).json(localizaNome)
-} catch(error){
+    res.status(200).json(localizaNome);
+  } catch (error) {
     console.log(error);
-    res.status(500).json({messagem: error.message});
-}
+    res.status(500).json({ messagem: error.message });
+  }
 };
-
 
 const alteraCadastro = async (req, res) => {
   try {
@@ -83,5 +86,5 @@ module.exports = {
   adicionaLivro,
   deletaLivro,
   localizaPeloNome,
-  alteraCadastro
+  alteraCadastro,
 };

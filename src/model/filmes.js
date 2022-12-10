@@ -10,7 +10,7 @@ const filmeSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
-  autor: {
+  diretor: {
     type: String,
     required: true,
   },

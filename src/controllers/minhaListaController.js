@@ -42,25 +42,27 @@ const deletaMinhaLista = async (req, res) => {
 };
 const localizaPeloNome = async (req, res) => {
   try {
-    const encontraNome = await minhaListaSchema.find({ nome: req.query.nome });
-    if (!encontraNome) {
-      res
-        .status(404)
+    const localizaNome = await minhaListaSchema.findOne({
+      nome: req.query.nome,
+    });
+    if (!localizaNome) {
+      return res
+        .status(400)
         .json({
-          message:
-            "Este nome não foi localizado, por favor confira e tente novamente",
+          mensagem: `'${req.query.nome}' não foi localizado, por favor confira e tente novamente.`,
         });
     }
-    res.status(200).json(localizaPeloNome);
+    res.status(200).json(localizaNome);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.log(error);
+    res.status(500).json({ messagem: error.message });
   }
 };
 
 const alteraCadastro = async (req, res) => {
   try {
     const { id } = req.params;
-    const { nome, autor, categoria, comentarios, } = req.body;
+    const { nome, autor, categoria, comentarios } = req.body;
     const alterarCadastro = await minhaListaSchema.findById(id);
     if (alterarCadastro == null) {
       res.status(404).json({ message: "Cadastro não localizado" });
@@ -79,11 +81,10 @@ const alteraCadastro = async (req, res) => {
   }
 };
 
-
 module.exports = {
   getMinhaLista,
   addMinhaLista,
   deletaMinhaLista,
   localizaPeloNome,
-  alteraCadastro
+  alteraCadastro,
 };

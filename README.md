@@ -23,7 +23,7 @@ A ideia de chama-la de "A Penseira" partiu do meu amor por Harry Potter e seu mu
 
 #### Irei melhorar esta API ao ponto de compartilhar com outras pessoas, para que usem como indicação de livros/filmes. E que também possam ter o hábito de anotar e compartilhar pois adoro esse tipo de troca.
 
-Irei implementar opções de carregar imagens das capas de filmes e livros e ate mesmo melhorar os metodos de pesquisa.
+Quero implementar opções de carregar imagens das capas de filmes e livros e ate mesmo ampliar os metodos de pesquisa.
 
 <br> 
 
@@ -34,8 +34,7 @@ Irei implementar opções de carregar imagens das capas de filmes e livros e ate
 - [Arquitetura](#arquitetura)
 - [Preparando o ambiente para o projeto](#instruções-para-instalações-no-projeto)
 - [Rotas](#rotas)
-[Preparando o ambiente para o autenticação](#instruções-para-autenticações-no-projeto)
-- [Referências](#referências)
+[Preparando o ambiente para a autenticação](#instruções-para-autenticações-no-projeto)
 
 <br> 
 

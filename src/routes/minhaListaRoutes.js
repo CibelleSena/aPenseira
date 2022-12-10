@@ -8,5 +8,4 @@ router.delete("/:id", minhaListaController.deletaMinhaLista);
 router.get("/nome", minhaListaController.localizaPeloNome);
 router.patch("/alterar/:id", minhaListaController.alteraCadastro);
 
-
 module.exports = router;

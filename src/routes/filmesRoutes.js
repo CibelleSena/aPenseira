@@ -9,7 +9,4 @@ router.delete("/:id", filmesController.deletaFilme);
 router.get("/nome", filmesController.localizaPeloNome);
 router.patch("/alterar/:id", filmesController.alteraCadastro);
 
-
-
-
 module.exports = router;

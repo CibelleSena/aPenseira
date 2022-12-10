@@ -93,5 +93,5 @@ module.exports = {
   adicionaUsuario,
   login,
   deletaUsuario,
-  alteraCadastro
+  alteraCadastro,
 };
