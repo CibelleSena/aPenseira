@@ -59,7 +59,7 @@ Quero implementar opções de carregar imagens das capas de filmes e livros e at
 | `mongoose`   | Dependência que interage com o MongoDB para a conexão da database, criação do model e das collections.|
 | `nodemon`    | Dependência que observa as atualizações realizadas nos documentos para rodar o servidor automaticamente.|
 | `npm`| Gerenciador de pacotes.|
-| `MongoDb`    | Banco de dados não relacional orietado a documentos.|
+| `MongoDb`    | Banco de dados não relacional orientado a documentos.|
 | `Mongo Atlas`| Interface gráfica para verificar se os dados foram persistidos.|
 | `Postman` | Interface gráfica para realizar os testes.|
 | `jsonwebtoken `| Dependência que implementa o protocolo JSON Web Token.|
@@ -70,9 +70,15 @@ Quero implementar opções de carregar imagens das capas de filmes e livros e at
 
 Link para a documentação:
 
+📝 Você pode visualizar meu Render [aqui](https://a-penseira.onrender.com)
+
 📝 Você pode visualizar meu Swagger [aqui](http://localhost:1313/minha-rota-de-documentacao/#/default)
 
-📝 Você pode visualizar meu Render [aqui](https://a-penseira.onrender.com)
+<h1 align="center">
+  <img src="src/assets/to_readme/Swagger.gif" width="800">
+<p align="center"><p></h1>
+
+
 
 <br>
 
@@ -218,6 +224,7 @@ Sou a Cibelle , tenho 36 anos, sou mineirinha de BH, mãe do Jorge de 3 anos. Co
 *Meus contatos:*
 - Meu [linkedin](https://www.linkedin.com/in/cibellesena/)
 - Meu [github](https://github.com/CibelleSena)
+
 
 <h1 align="center">
   <img src="src/assets/to_readme/the%20end.gif" width="500">

@@ -39,6 +39,9 @@ const adicionaUsuario = async (req, res) => {
 
 const login = (req, res) => {
   usuarioSchema.findOne({ email: req.body.email }, function (error, usuario) {
+    if (error) {
+      return res.status(500).send(err.message);
+    }
     if (!usuario) {
       return res.status(404).send(`Não localizamos o email ${req.body.email}`);
     }
