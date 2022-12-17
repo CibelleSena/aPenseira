@@ -45,11 +45,9 @@ const localizaPeloNome = async (req, res) => {
   try {
     const localizaNome = await filmeSchema.findOne({ nome: req.query.nome });
     if (!localizaNome) {
-      return res
-        .status(400)
-        .json({
-          mensagem: `O filme '${req.query.nome}' não foi localizado,por favor confira e tente novamente.`,
-        });
+      return res.status(400).json({
+        mensagem: `O filme '${req.query.nome}' não foi localizado,por favor confira e tente novamente.`,
+      });
     }
     res.status(200).json(localizaNome);
   } catch (error) {

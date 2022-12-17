@@ -9,4 +9,3 @@ router.delete("/:id", usuariosController.deletaUsuario);
 router.patch("/alterar/:id", usuariosController.alteraCadastro);
 
 module.exports = router;
-

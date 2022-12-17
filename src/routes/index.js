@@ -7,6 +7,4 @@ router.get("/apenseira", function (req, res) {
   });
 });
 
-
-
 module.exports = router;

@@ -18,23 +18,23 @@ const getAllUsuarios = (req, res) => {
   usuarioSchema.find(function (err, usuario) {
     res.status(200).send(usuario);
   });
-}; 
+};
 
 const adicionaUsuario = async (req, res) => {
   try {
-    const senhaComHash = bcrypt.hashSync(req.body.password, 10)
-    req.body.password = senhaComHash
+    const senhaComHash = bcrypt.hashSync(req.body.password, 10);
+    req.body.password = senhaComHash;
     const NovoUsuario = new usuarioSchema(req.body);
 
     const UsuarioSalvo = await NovoUsuario.save();
 
     return res.status(201).send({
-      "message": "Usuário criado com sucesso",
-      UsuarioSalvo
+      message: "Usuário criado com sucesso",
+      UsuarioSalvo,
     });
   } catch (e) {
     console.error(e);
-  };
+  }
 };
 
 const login = (req, res) => {
@@ -57,7 +57,6 @@ const login = (req, res) => {
   });
 };
 
-
 const deletaUsuario = async (req, res) => {
   try {
     const encontraUsuario = await usuarioSchema.findById(req.params.id);
@@ -74,7 +73,6 @@ const deletaUsuario = async (req, res) => {
     });
   }
 };
-
 
 const alteraCadastro = async (req, res) => {
   try {
@@ -95,7 +93,7 @@ const alteraCadastro = async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
-}; 
+};
 
 module.exports = {
   getAllUsuarios,
